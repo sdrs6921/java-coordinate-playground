@@ -20,12 +20,20 @@ public class X {
         }
     }
 
+    public int distance(final X otherX) {
+        return Math.abs(this.value() - otherX.value());
+    }
+
+    private int value() {
+        return value;
+    }
+
     @Override
     public boolean equals(final Object object) {
         if (this == object) return true;
         if (!(object instanceof X)) return false;
         final X x = (X) object;
-        return value == x.value;
+        return value() == x.value();
     }
 
     @Override

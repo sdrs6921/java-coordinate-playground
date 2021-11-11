@@ -31,4 +31,21 @@ class XTest {
         assertThatIllegalArgumentException().isThrownBy(() -> new X(outOfRangeValue))
                 .withMessageContaining("x값은 0이상 24이하여야 합니다");
     }
+
+    @Test
+    @DisplayName("다른 X의 값과 거리를 반환한다")
+    void distance() {
+        //given
+        int value = 1;
+        X x = new X(value);
+
+        int otherValue = 2;
+        X otherX = new X(otherValue);
+
+        //when
+        int distance = x.distance(otherX);
+
+        //then
+        assertThat(distance).isEqualTo(1);
+    }
 }
