@@ -4,6 +4,8 @@ import java.util.Objects;
 
 public class Point {
 
+    private static final int EXPONENT = 2;
+
     private final X x;
     private final Y y;
 
@@ -14,6 +16,21 @@ public class Point {
 
     public Point(final int x, final int y) {
         this(new X(x), new Y(y));
+    }
+
+    public double distance(final Point otherPoint) {
+        int xDistance = x().distance(otherPoint.x());
+        int yDistance = y().distance(otherPoint.y());
+
+        return Math.sqrt(Math.pow(xDistance, EXPONENT) + Math.pow(yDistance, EXPONENT));
+    }
+
+    private X x() {
+        return x;
+    }
+
+    private Y y() {
+        return y;
     }
 
     @Override
