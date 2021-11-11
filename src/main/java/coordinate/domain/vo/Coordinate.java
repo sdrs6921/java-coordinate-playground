@@ -5,8 +5,8 @@ import java.util.Objects;
 public class Coordinate {
 
 
-    private static final int MIN_X_VALUE = 0;
-    private static final int MAX_X_VALUE = 24;
+    private static final int MIN_COORDINATE_VALUE = 0;
+    private static final int MAX_COORDINATE_VALUE = 24;
 
     private final int value;
 
@@ -16,8 +16,8 @@ public class Coordinate {
     }
 
     private void validateOutOfRange(final int value) {
-        if (value < MIN_X_VALUE || value > MAX_X_VALUE) {
-            throw new IllegalArgumentException("x값은 0이상 24이하여야 합니다");
+        if (value < MIN_COORDINATE_VALUE || value > MAX_COORDINATE_VALUE) {
+            throw new IllegalArgumentException("좌표 값은 0이상 24이하여야 합니다");
         }
     }
 
