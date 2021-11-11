@@ -7,6 +7,7 @@ public class Coordinate {
 
     private static final int MIN_COORDINATE_VALUE = 0;
     private static final int MAX_COORDINATE_VALUE = 24;
+    private static final String INVALID_COORDINATE_VALUE_MESSAGE = "좌표 값은 0이상 24이하여야 합니다";
 
     private final int value;
 
@@ -17,7 +18,7 @@ public class Coordinate {
 
     private void validateOutOfRange(final int value) {
         if (value < MIN_COORDINATE_VALUE || value > MAX_COORDINATE_VALUE) {
-            throw new IllegalArgumentException("좌표 값은 0이상 24이하여야 합니다");
+            throw new IllegalArgumentException(INVALID_COORDINATE_VALUE_MESSAGE);
         }
     }
 

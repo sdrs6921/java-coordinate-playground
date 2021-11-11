@@ -29,7 +29,7 @@ class CoordinateTest {
     void create_throw_exception_with_out_of_range(final int outOfRangeValue) {
         //then
         assertThatIllegalArgumentException().isThrownBy(() -> new Coordinate(outOfRangeValue))
-                .withMessageContaining("x값은 0이상 24이하여야 합니다");
+                .withMessageContaining("좌표 값은 0이상 24이하여야 합니다");
     }
 
     @Test
