@@ -15,8 +15,8 @@ class PointTest {
         int xValue = 0;
         int yValue = 0;
 
-        X x = new X(xValue);
-        Y y = new Y(yValue);
+        Coordinate x = new Coordinate(xValue);
+        Coordinate y = new Coordinate(yValue);
 
         //when
         Point point = new Point(x, y);

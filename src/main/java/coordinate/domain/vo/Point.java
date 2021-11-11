@@ -6,16 +6,16 @@ public class Point {
 
     private static final int EXPONENT = 2;
 
-    private final X x;
-    private final Y y;
+    private final Coordinate x;
+    private final Coordinate y;
 
-    public Point(final X x, final Y y) {
+    public Point(final Coordinate x, final Coordinate y) {
         this.x = x;
         this.y = y;
     }
 
     public Point(final int x, final int y) {
-        this(new X(x), new Y(y));
+        this(new Coordinate(x), new Coordinate(y));
     }
 
     public double distance(final Point otherPoint) {
@@ -25,11 +25,11 @@ public class Point {
         return Math.sqrt(Math.pow(xDistance, EXPONENT) + Math.pow(yDistance, EXPONENT));
     }
 
-    private X x() {
+    private Coordinate x() {
         return x;
     }
 
-    private Y y() {
+    private Coordinate y() {
         return y;
     }
 

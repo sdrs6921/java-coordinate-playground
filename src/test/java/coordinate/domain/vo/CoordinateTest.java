@@ -8,42 +8,42 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
-class YTest {
+class CoordinateTest {
 
     @Test
-    @DisplayName("y값을 생성한다")
+    @DisplayName("x값을 생성한다")
     void create() {
         //given
         int value = 0;
 
         //when
-        Y y = new Y(value);
+        Coordinate coordinate = new Coordinate(value);
 
         //then
-        assertThat(y).isEqualTo(new Y(value));
+        assertThat(coordinate).isEqualTo(new Coordinate(value));
     }
 
     @ParameterizedTest
     @ValueSource(ints = {-1, 25})
     @DisplayName("0미만 24초과의 값은 예외를 발생시킨다")
-    void create_throw_exception_with_out_of_range_value(final int outOfRangeValue) {
+    void create_throw_exception_with_out_of_range(final int outOfRangeValue) {
         //then
-        assertThatIllegalArgumentException().isThrownBy(() -> new Y(outOfRangeValue))
-                .withMessageContaining("y값은 0이상 24이하여야 합니다");
+        assertThatIllegalArgumentException().isThrownBy(() -> new Coordinate(outOfRangeValue))
+                .withMessageContaining("x값은 0이상 24이하여야 합니다");
     }
 
     @Test
-    @DisplayName("다른 Y 값과의 거리를 반환한다")
+    @DisplayName("다른 X의 값과 거리를 반환한다")
     void distance() {
         //given
         int value = 1;
-        Y y = new Y(value);
+        Coordinate coordinate = new Coordinate(value);
 
-        int otherValue = 0;
-        Y otherY = new Y(otherValue);
+        int otherValue = 2;
+        Coordinate otherCoordinate = new Coordinate(otherValue);
 
         //when
-        int distance = y.distance(otherY);
+        int distance = coordinate.distance(otherCoordinate);
 
         //then
         assertThat(distance).isEqualTo(1);
