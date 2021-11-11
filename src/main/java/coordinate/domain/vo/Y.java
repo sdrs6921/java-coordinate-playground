@@ -20,6 +20,14 @@ public class Y {
         }
     }
 
+    public int distance(final Y otherY) {
+        return this.value() - otherY.value();
+    }
+
+    private int value() {
+        return value;
+    }
+
     @Override
     public boolean equals(final Object object) {
         if (this == object) return true;

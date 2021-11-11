@@ -31,4 +31,21 @@ class YTest {
         assertThatIllegalArgumentException().isThrownBy(() -> new Y(outOfRangeValue))
                 .withMessageContaining("y값은 0이상 24이하여야 합니다");
     }
+
+    @Test
+    @DisplayName("다른 Y 값과의 거리를 반환한다")
+    void distance() {
+        //given
+        int value = 1;
+        Y y = new Y(value);
+
+        int otherValue = 0;
+        Y otherY = new Y(otherValue);
+
+        //when
+        int distance = y.distance(otherY);
+
+        //then
+        assertThat(distance).isEqualTo(1);
+    }
 }
