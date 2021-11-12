@@ -33,6 +33,14 @@ public class Point {
         return y;
     }
 
+    public boolean hasSameXCoordinate(final Point otherPoint) {
+        return x().equals(otherPoint.x);
+    }
+
+    public boolean hasSameYCoordinate(final Point otherPoint) {
+        return y().equals(otherPoint.y());
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (this == o) return true;

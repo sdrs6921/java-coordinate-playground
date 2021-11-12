@@ -2,6 +2,8 @@ package coordinate.domain.vo;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.offset;
@@ -81,5 +83,37 @@ class PointTest {
 
         //then
         assertThat(y).isEqualTo(new Coordinate(yValue));
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1, 1, true", "1, 2, false"})
+    @DisplayName("다른 점을 입력받아 같은 같은 X 좌표의 일치 여부를 반환한다")
+    void hasSameXCoordinate(final int xValue, final int otherXValue, final boolean expected) {
+        //given
+        int yValue = 1;
+        Point point = new Point(xValue, yValue);
+        Point otherPoint = new Point(otherXValue, yValue);
+
+        //when
+        boolean actual = point.hasSameXCoordinate(otherPoint);
+
+        //then
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1, 1, true", "1, 2, false"})
+    @DisplayName("다른 점을 입력받아 같은 같은 X 좌표의 일치 여부를 반환한다")
+    void hasSameYCoordinate(final int yValue, final int otherYValue, final boolean expected) {
+        //given
+        int xValue = 1;
+        Point point = new Point(xValue, yValue);
+        Point otherPoint = new Point(xValue, otherYValue);
+
+        //when
+        boolean actual = point.hasSameYCoordinate(otherPoint);
+
+        //then
+        assertThat(actual).isEqualTo(expected);
     }
 }
