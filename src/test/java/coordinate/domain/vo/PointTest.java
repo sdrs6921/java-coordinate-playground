@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.Assertions.offset;
 
 class PointTest {
@@ -115,5 +116,41 @@ class PointTest {
 
         //then
         assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    @DisplayName("다른 점과의 기울기의 절대값을 반환한다")
+    void absoluteSlopeValue() {
+        //given
+        int xValue = 1;
+        int yValue = 1;
+        Point point = new Point(xValue, yValue);
+
+        int otherXValue = 4;
+        int otherYValue = 2;
+        Point otherPoint = new Point(otherXValue, otherYValue);
+
+        //when
+        double actual = point.absoluteSlopeValue(otherPoint);
+
+        //then
+        assertThat(actual).isEqualTo(0.333, offset(0.001));
+    }
+
+    @Test
+    @DisplayName("다른 점과의 기울기의 절대값을 반환한다")
+    void absoluteSlopeValue_throw_exception_with_not_increase_x_value() {
+        //given
+        int xValue = 1;
+        int yValue = 1;
+        Point point = new Point(xValue, yValue);
+
+        int otherXValue = 1;
+        int otherYValue = 2;
+        Point otherPoint = new Point(otherXValue, otherYValue);
+
+        //then
+        assertThatIllegalArgumentException().isThrownBy(() -> point.absoluteSlopeValue(otherPoint))
+                .withMessage("x 변화량이 0일 경우 기울기가 무한대가 됩니다");
     }
 }
