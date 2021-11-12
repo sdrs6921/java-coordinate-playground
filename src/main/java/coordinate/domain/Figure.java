@@ -1,8 +1,6 @@
 package coordinate.domain;
 
+@FunctionalInterface
 public interface Figure {
-
     double area();
-
-    boolean equals(final Object other);
 }

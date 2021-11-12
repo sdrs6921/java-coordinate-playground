@@ -25,11 +25,11 @@ public class Point {
         return Math.sqrt(Math.pow(xDistance, EXPONENT) + Math.pow(yDistance, EXPONENT));
     }
 
-    private Coordinate x() {
+    public Coordinate x() {
         return x;
     }
 
-    private Coordinate y() {
+    public Coordinate y() {
         return y;
     }
 

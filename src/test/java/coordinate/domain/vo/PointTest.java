@@ -52,4 +52,34 @@ class PointTest {
         //then
         assertThat(distance).isEqualTo(1.414, offset(0.001));
     }
+
+    @Test
+    @DisplayName("x 좌표를 반환한다")
+    void x() {
+        //given
+        int xValue = 1;
+        int yValue = 1;
+        Point point = new Point(xValue, yValue);
+
+        //when
+        Coordinate x = point.x();
+
+        //then
+        assertThat(x).isEqualTo(new Coordinate(xValue));
+    }
+
+    @Test
+    @DisplayName("y 좌표를 반환한다")
+    void y() {
+        //given
+        int xValue = 1;
+        int yValue = 1;
+        Point point = new Point(xValue, yValue);
+
+        //when
+        Coordinate y = point.y();
+
+        //then
+        assertThat(y).isEqualTo(new Coordinate(yValue));
+    }
 }
