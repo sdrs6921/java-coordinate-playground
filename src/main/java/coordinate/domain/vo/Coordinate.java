@@ -42,4 +42,9 @@ public class Coordinate {
     public int hashCode() {
         return Objects.hash(value);
     }
+
+    public int absoluteIncrementValue(final Coordinate otherCoordinate) {
+        int increment = value() - otherCoordinate.value();
+        return Math.abs(increment);
+    }
 }

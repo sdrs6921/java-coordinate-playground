@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 class CoordinateTest {
 
     @Test
-    @DisplayName("x값을 생성한다")
+    @DisplayName("좌표 값을 생성한다")
     void create() {
         //given
         int value = 0;
@@ -33,7 +33,7 @@ class CoordinateTest {
     }
 
     @Test
-    @DisplayName("다른 X의 값과 거리를 반환한다")
+    @DisplayName("다른 좌표값과 거리를 반환한다")
     void distance() {
         //given
         int value = 1;
@@ -47,5 +47,22 @@ class CoordinateTest {
 
         //then
         assertThat(distance).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("다른 좌표 값과 절대 증가값을 반환한다")
+    void absoluteIncrementValue() {
+        //given
+        int value = 1;
+        Coordinate coordinate = new Coordinate(value);
+
+        int otherValue = 3;
+        Coordinate otherCoordinate = new Coordinate(otherValue);
+
+        //when
+        int absoluteIncrementValue = coordinate.absoluteIncrementValue(otherCoordinate);
+
+        //then
+        assertThat(absoluteIncrementValue).isEqualTo(2);
     }
 }
