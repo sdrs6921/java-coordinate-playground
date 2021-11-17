@@ -51,18 +51,4 @@ class StraightLineTest {
 
         assertThat(length).isEqualTo(1.414, offset(0.001));
     }
-
-    @Test
-    @DisplayName("선의 넓이를 반환한다")
-    void area() {
-        //given
-        List<Point> points = Arrays.asList(new Point(0, 0), new Point(1, 1));
-        AbstractFigure figure = new StraightLine(points);
-
-        //when
-        double area = figure.area();
-
-        //then
-        assertThat(area).isZero();
-    }
 }
