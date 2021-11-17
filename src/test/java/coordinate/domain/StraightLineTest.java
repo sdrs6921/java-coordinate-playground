@@ -4,10 +4,10 @@ import coordinate.domain.vo.Point;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.Assertions.offset;
@@ -18,7 +18,7 @@ class StraightLineTest {
     @DisplayName("선을 생성한다")
     void create() {
         //given
-        List<Point> points = Arrays.asList(new Point(0, 0), new Point(1, 1));
+        List<Point> points = asList(new Point(0, 0), new Point(1, 1));
 
         //when
         Line line = new StraightLine(points);
@@ -36,14 +36,25 @@ class StraightLineTest {
 
         //then
         assertThatIllegalArgumentException().isThrownBy(() -> new StraightLine(points))
-                .withMessageContaining("선의 점의 개수는 2개여야 합니다");
+                .withMessage("선의 점의 개수는 2개여야 합니다");
+    }
+
+    @Test
+    @DisplayName("점 사이에 중복이 존재하면 예외를 발생시킨다")
+    void create_throw_exception_with_duplicate_points() {
+        //given
+        List<Point> points = asList(new Point(0, 0), new Point(0, 0));
+
+        //then
+        assertThatIllegalArgumentException().isThrownBy(() -> new StraightLine(points))
+                .withMessage("점 사이에 중복이 존재합니다");
     }
 
     @Test
     @DisplayName("선의 길이를 반환한다")
     void length() {
         //given
-        List<Point> points = Arrays.asList(new Point(0, 0), new Point(1, 1));
+        List<Point> points = asList(new Point(0, 0), new Point(1, 1));
         Line line = new StraightLine(points);
 
         //when
