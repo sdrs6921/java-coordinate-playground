@@ -4,7 +4,6 @@ import java.util.Objects;
 
 public class Coordinate {
 
-
     private static final int MIN_COORDINATE_VALUE = 0;
     private static final int MAX_COORDINATE_VALUE = 24;
     private static final String INVALID_COORDINATE_VALUE_MESSAGE = "좌표 값은 0이상 24이하여야 합니다";
@@ -30,6 +29,11 @@ public class Coordinate {
         return value;
     }
 
+    public int absoluteIncrementValue(final Coordinate otherCoordinate) {
+        int increment = value() - otherCoordinate.value();
+        return Math.abs(increment);
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (this == o) return true;
@@ -41,10 +45,5 @@ public class Coordinate {
     @Override
     public int hashCode() {
         return Objects.hash(value);
-    }
-
-    public int absoluteIncrementValue(final Coordinate otherCoordinate) {
-        int increment = value() - otherCoordinate.value();
-        return Math.abs(increment);
     }
 }
