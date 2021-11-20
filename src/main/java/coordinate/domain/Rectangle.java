@@ -71,6 +71,11 @@ public class Rectangle implements Figure {
     }
 
     @Override
+    public String figureType() {
+        return "사각형";
+    }
+
+    @Override
     public double area() {
         Point point = points.get(0);
         Point sameXCoordinatePoint = getSameCoordinatePoint(point::hasSameXCoordinate);

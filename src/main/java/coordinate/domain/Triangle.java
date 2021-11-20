@@ -41,14 +41,14 @@ public class Triangle implements Figure {
     }
 
     private void validateIsTriangle(final List<Point> points) {
-        List<Line> sidesSortedByDesc = getSidesOrderByDescFrom(points);
+        List<Line> sidesSortedByLengthDesc = getSidesOrderByLengthDescFrom(points);
 
-        if (isTriangle(sidesSortedByDesc)) {
+        if (isLongestSideLongerThanSumOfOtherSides(sidesSortedByLengthDesc)) {
             throw new IllegalArgumentException(INVALID_TRIANGLE_POINTS_EXCEPTION_MESSAGE);
         }
     }
 
-    private List<Line> getSidesOrderByDescFrom(final List<Point> points) {
+    private List<Line> getSidesOrderByLengthDescFrom(final List<Point> points) {
         return IntStream.range(0, points.size())
                 .mapToObj(index -> asList(points.get(index), points.get((index + 1) % NUMBER_OF_TRIANGLE_POINTS)))
                 .map(StraightLine::new)
@@ -56,7 +56,7 @@ public class Triangle implements Figure {
                 .collect(Collectors.toUnmodifiableList());
     }
 
-    private boolean isTriangle(final List<Line> sidesSortedByDesc) {
+    private boolean isLongestSideLongerThanSumOfOtherSides(final List<Line> sidesSortedByDesc) {
         return sidesSortedByDesc.get(0).length() >=
                 sidesSortedByDesc.get(1).length() + sidesSortedByDesc.get(2).length();
     }
@@ -66,8 +66,13 @@ public class Triangle implements Figure {
     }
 
     @Override
+    public String figureType() {
+        return "삼각형";
+    }
+
+    @Override
     public double area() {
-        List<Line> sidesOrderByDesc = getSidesOrderByDescFrom(points);
+        List<Line> sidesOrderByDesc = getSidesOrderByLengthDescFrom(points);
         return heronsFormula(sidesOrderByDesc);
     }
 
