@@ -34,7 +34,7 @@ public class Point {
     }
 
     public boolean hasSameXCoordinate(final Point otherPoint) {
-        return x().equals(otherPoint.x);
+        return x().equals(otherPoint.x());
     }
 
     public boolean hasSameYCoordinate(final Point otherPoint) {
@@ -42,11 +42,11 @@ public class Point {
     }
 
     @Override
-    public boolean equals(final Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Point)) return false;
-        final Point point = (Point) o;
-        return x.equals(point.x) && y.equals(point.y);
+    public boolean equals(final Object other) {
+        if (this == other) return true;
+        if (!(other instanceof Point)) return false;
+        final Point point = (Point) other;
+        return x().equals(point.x()) && y().equals(point.y());
     }
 
     @Override
