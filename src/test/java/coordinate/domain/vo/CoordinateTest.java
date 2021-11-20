@@ -48,21 +48,4 @@ class CoordinateTest {
         //then
         assertThat(distance).isEqualTo(1);
     }
-
-    @Test
-    @DisplayName("다른 좌표 값과 절대 증가값을 반환한다")
-    void absoluteIncrementValue() {
-        //given
-        int value = 1;
-        Coordinate coordinate = new Coordinate(value);
-
-        int otherValue = 3;
-        Coordinate otherCoordinate = new Coordinate(otherValue);
-
-        //when
-        int absoluteIncrementValue = coordinate.absoluteIncrementValue(otherCoordinate);
-
-        //then
-        assertThat(absoluteIncrementValue).isEqualTo(2);
-    }
 }

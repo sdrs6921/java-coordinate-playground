@@ -29,11 +29,6 @@ public class Coordinate {
         return value;
     }
 
-    public int absoluteIncrementValue(final Coordinate otherCoordinate) {
-        int increment = value() - otherCoordinate.value();
-        return Math.abs(increment);
-    }
-
     @Override
     public boolean equals(final Object o) {
         if (this == o) return true;
